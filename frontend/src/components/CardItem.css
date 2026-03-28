@@ -1,0 +1,84 @@
+.card-item {
+  background: #22272b;
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border 0.15s, box-shadow 0.15s;
+}
+
+.card-item:hover {
+  border-color: #388bff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.card-item.dragging {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  transform: rotate(2deg);
+}
+
+.card-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.card-label {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+}
+
+.card-title {
+  color: #b6c2cf;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.card-due {
+  font-size: 11px;
+  color: #9fadbc;
+}
+
+.card-checklist {
+  font-size: 11px;
+  color: #9fadbc;
+  background: rgba(255,255,255,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.card-checklist.done {
+  background: #1f845a;
+  color: white;
+}
+
+.card-members {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.member-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+}

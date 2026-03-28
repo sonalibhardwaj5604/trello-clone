@@ -1,0 +1,84 @@
+.home {
+  min-height: 100vh;
+  background: #1d2125;
+  padding: 40px;
+}
+
+.home-header h1 {
+  color: white;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.boards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.board-card {
+  width: 200px;
+  height: 100px;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  font-weight: 600;
+  color: white;
+  font-size: 15px;
+  transition: opacity 0.2s;
+}
+
+.board-card:hover { opacity: 0.85; }
+
+.create-board {
+  background: #2c333a !important;
+  color: #9fadbc !important;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+}
+
+.new-board-form {
+  background: #2c333a !important;
+  flex-direction: column;
+  gap: 8px;
+  height: auto;
+}
+
+.new-board-form input {
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 2px solid #388bff;
+  background: #22272b;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.new-board-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.new-board-actions button:first-child {
+  background: #388bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.new-board-actions button:last-child {
+  background: transparent;
+  color: #9fadbc;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
