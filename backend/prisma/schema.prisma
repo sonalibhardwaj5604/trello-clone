@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Board {
+  id        Int      @id @default(autoincrement())
+  title     String
+  bgColor   String   @default("#0052cc")
+  createdAt DateTime @default(now())
+  lists     List[]
+  members   Member[]
+}
+
+model List {
+  id        Int      @id @default(autoincrement())
+  title     String
+  position  Float
+  boardId   Int
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  cards     Card[]
+  createdAt DateTime @default(now())
+}
+
+model Card {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String?
+  position    Float
+  dueDate     DateTime?
+  archived    Boolean      @default(false)
+  listId      Int
+  list        List         @relation(fields: [listId], references: [id], onDelete: Cascade)
+  labels      CardLabel[]
+  checklists  Checklist[]
+  assignments CardMember[]
+  createdAt   DateTime     @default(now())
+}
+
+model Member {
+  id          Int          @id @default(autoincrement())
+  name        String
+  avatar      String
+  color       String
+  boardId     Int
+  board       Board        @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  assignments CardMember[]
+}
+
+model CardMember {
+  cardId   Int
+  memberId Int
+  card     Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  member   Member @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  @@id([cardId, memberId])
+}
+
+model CardLabel {
+  id     Int    @id @default(autoincrement())
+  color  String
+  text   String
+  cardId Int
+  card   Card   @relation(fields: [cardId], references: [id], onDelete: Cascade)
+}
+
+model Checklist {
+  id     Int             @id @default(autoincrement())
+  title  String
+  cardId Int
+  card   Card            @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  items  ChecklistItem[]
+}
+
+model ChecklistItem {
+  id          Int       @id @default(autoincrement())
+  text        String
+  completed   Boolean   @default(false)
+  checklistId Int
+  checklist   Checklist @relation(fields: [checklistId], references: [id], onDelete: Cascade)
+}
